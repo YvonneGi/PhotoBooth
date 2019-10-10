@@ -92,8 +92,14 @@ class ImagesTestClass(TestCase):
         self.assertTrue(Images.name)
     # Testing get images by id Method
     # def test_get_images_by_id(self):
-    #     test_date = '2017-03-17'
-    #     date = dt.datetime.strptime(test_date, '%Y-%m-%d').date()
-    #     news_by_date = Article.days_news(date)
-    #     self.assertTrue(len(news_by_date) == 0)
+    #     images = Images.objects.filter(name = "Wall").first()
+    #     get_images = Images.objects.get(id=image.id)
+    #     self.assertTrue(images.id)
+
+    # Testing filter by by location Method
+    # def test_filter_by_location(self):
+    #     self.kigali.save_location()
+    #     images = Images.objects.filter(location = "kigali").first()
+    #     self.assertTrue(Images.name)
+
  
