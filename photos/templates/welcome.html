@@ -1,0 +1,63 @@
+{% load bootstrap4 %} {% load static%}
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link href="https://fonts.googleapis.com/css?family=Do+Hyeon" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Acme" rel="stylesheet">
+    <title>PhotoBooth</title>
+    {% block styles %} {% bootstrap_css %} {% endblock %}
+
+</head>
+<style>
+    .card{
+        padding: 55px;
+        background-color: black;
+        opacity: 0.9;
+        text-align: center;
+        margin-top: 20px;
+        margin-left: 200px;
+        margin-right: 200px;
+        font-size: 20px;
+        border-radius: 20px;
+    }
+    .container {
+        background-color: whitesmoke;
+        opacity: 0.85;
+        padding: 20px;
+        border-radius: 20px;
+    }
+    h1 {
+        color: cornflowerblue;
+        text-align: center;
+        font-family: 'Do Hyeon', sans-serif;
+        font-size: 100px;
+    }
+    body {
+        background-image: url('./static/images/wall.jpg');
+    }
+    p{
+        color: white;
+        font-family: 'Acme', sans-serif;
+    }
+</style>
+<body>
+    {% include "navbar.html" %} {% block content %}
+    <div class="container">
+        <h1><a href="/day">PhotoBooth!</a></h1>
+    </div>
+
+    <div class="card">
+        <p>Welcome to PhotoBooth, a web application used to display images and search for related tags within the app, enjoy your experience within PhotoBooth and be sure to leave a photo to expand the library :)</p>
+        <p>
+            <a href="/all">Click Me For More</a>
+        </p>
+    </div>
+<!--Script files-->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script> {% bootstrap_javascript %} {% endblock %}
+</body>
+
+</html>
