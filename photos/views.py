@@ -7,4 +7,6 @@ import datetime as dt
 def welcome(request):
     return render(request, 'welcome.html')
 
-
+def display_image(request):
+    date = dt.date.today()
+    return render(request, 'today.html', {"date": date})
