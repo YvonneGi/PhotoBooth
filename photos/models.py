@@ -63,8 +63,8 @@ class Images(models.Model):
     photo = models.ImageField(upload_to='Images/')
     name = models.CharField(max_length=30)
     descripton = models.TextField()
-    location = models.ForeignKey(Location)
-    category = models.ForeignKey(Category, on_delete=models.CASCADE, blank=True, null=True)
+    location = models.ForeignKey(Location,null=True)
+    category = models.ForeignKey(Category,null=True)
     time_posted = models.DateTimeField(auto_now_add=True, null=True)
 
     def __str__(self):
