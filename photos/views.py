@@ -13,9 +13,9 @@ def display_image(request):
     date = dt.date.today()
     return render(request, 'all-photos/today.html', {"date": date})
 
-def single_photo(request, photo_id):
-    images = Images.objects.get(id=photo_id)
-    return render(request, 'all-photos/single_image.html', {'images': images})
+# def single_photo(request, photo_id):
+#     images = Images.objects.get(id=photo_id)
+#     return render(request, 'all-photos/single_image.html', {'images': images})
 
 def all_images(request):
     images = Images.get_images()
