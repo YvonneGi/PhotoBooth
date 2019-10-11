@@ -8,25 +8,24 @@
 </head>
 
 <body style="background-color: black">
-  {%extends 'base.html'%} {% block content %}
+  {%extends 'all-photos/base.html'%} {% block content %}
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/uikit/2.xx.x/css/uikit.min.css" />
   <script src="https://cdnjs.cloudflare.com/ajax/libs/uikit/2.xx.x/js/uikit.min.js"></script>
 
   <div class="container">
 
-    <div class="col-md-6 col-md-offset-3 col-sm-12 uk-card uk-card-default uk-card-body uk-width-1-2@m"
-      style="background-color: black">
-      <img src="{{image.photo.url}}" class="img-responsive" width="100%" height="100%">
+    <div class="col-md-6 col-md-offset-3 col-sm-12 uk-card uk-card-default uk-card-body uk-width-1-2@m" style="background-color: black">
+      <img src="{{images.photo.url}}" class="img-responsive" width="100%" height="100%">
 
       <div>
         <div class="uk-card uk-card-primary uk-card-body" style="border-radius: 20px">
-          <h3 class="uk-card-title">{{photo.name.capitalize}}</h3>
-          <hr class="uk-divider-icon">
-          <p>{{photo.descripton}}</p>
+          <h3 class="uk-card-title">{{images.name.capitalize}}</h3>
+          <!-- <hr class="uk-divider-icon"> -->
+          <p>{{images.descripton}}</p>
           <br>
-          <p> Location: {{photo.location}}</p>
-          <p> Category: {{photo.category}}</p>
-          <p> {{photo.time_posted}}</p>
+          <p> Location: {{images.location}}</p>
+          <p> Category: {{images.category}}</p>
+          <p> {{images.time_posted}}</p>
         </div>
       </div>
     </div>
