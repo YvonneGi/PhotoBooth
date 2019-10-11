@@ -1,0 +1,36 @@
+{% extends 'base.html' %} {% block content %}
+<div class="container">
+    <section class="no-touch">
+        <p class="text-center" style="font-size:1.3em">Search Results:
+            <span>{{photos|length}}</span> matches found </p>
+
+        {% if photos %} {% for photo_item in photos%}
+
+        <div class="col-md-10 col-md-offset-1 col-sm-12">
+            <a href="{% url 'singlePhoto' photo_item.id %}">
+                <img src="{{photo.photo.url}}" class="img-responsive" width="100%" height="100%" alt="">
+                <div class="uk-card uk-card-default uk-card-body uk-width-1-2@m">
+                    <h3 class="uk-card-title">{{photo_item.name|upper}}</h3>
+                    <hr class="uk-divider-icon">
+                    <img src="{{photo_item.photo.url}}" class="img-responsive" width="100%" height="100%">
+                </div>
+            </a>
+        </div>
+
+
+
+        {% endfor %} {% else %}
+        <div>
+            <div class="uk-card uk-card-primary uk-card-body">
+                <hr class="uk-divider-icon">
+                <h2 class="uk-card-title">No Photos found with that search criteria </h2>
+                <hr class="uk-divider-icon">
+
+            </div>
+            {% endif %}
+        </div>
+
+    </section>
+
+
+    {% endblock %}

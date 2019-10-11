@@ -1,4 +1,5 @@
-{% extends 'base.html' %} {% block content %} {{block.super}}
+{% extends 'base.html' %} {% block content %} 
+{{block.super}}
 
 <!DOCTYPE html>
 <html lang="en">
@@ -11,7 +12,7 @@
   <title>PhotoBooth Today</title>
 </head>
 
-<!--Styling -->
+<!-- Styling -->
 <style>
   p {
     font-family: 'Acme', sans-serif;
@@ -19,21 +20,21 @@
     font-size: 50px;
   }
 </style>
-<!--End of styling-->
+<!-- End of styling -->
 
 <body>
   <p> Here Comes The Hits of the day</p>
   <!-- Looping through news   -->
-  {% for photos_item in photos %}
+  {% for image in images %}
   <div class="row">
     <!-- displaying News articles -->
     <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
-      <h2 class="text-center"> {{ photos_item.name }} </h2>
-      <p><img src="{{photo_item.photo.url}}" class="img-responsive" alt="Image" height="100px" width="100px"></p>
-      <p>{{photos_item.location}}</p>
-      <p>{{photos_item.category}}</p>
-      <p>{{photos_item.description}}</p>
-      <p>{{photos_item.time_posted}}</p>
+      <img src="{{image.photo.url}}" class="img-responsive" width="100%" height="100%">
+      <h2 class="uk-card-title">{{image.name|upper}}</h2>
+      <p>{{image.location}}</p>
+      <p>{{image.category}}</p>
+      <p>{{image.description}}</p>
+      <p>{{image.time_posted}}</p>
     </div>
   </div>
   {% endfor %}
