@@ -64,7 +64,7 @@ class Images(models.Model):
     name = models.CharField(max_length=30)
     descripton = models.TextField()
     location = models.ForeignKey(Location,null=True)
-    category = models.ForeignKey(Category,null=True)
+    category = models.ForeignKey(Category,null=True,db_column="cat_name")
     time_posted = models.DateTimeField(auto_now_add=True, null=True)
 
     def __str__(self):
@@ -113,7 +113,7 @@ class Images(models.Model):
 
     @classmethod
     def search_by_cat_name(cls, search_term):
-        photo = cls.objects.filter(name__icontains=search_term)
+        photo = cls.objects.filter(category__cat_name__icontains=search_term)
         return photo
 
     @classmethod

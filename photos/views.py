@@ -22,12 +22,12 @@ def all_images(request):
     return render(request, 'all-photos/all_images.html', {"images": images})
 
 def search_images(request):
-    if 'photos' in request.GET and request.GET['photos']:
-        search_term = request.GET.get('photos')
+    if 'image' in request.GET and request.GET['image']:
+        search_term = request.GET.get('image')
         searched_photo = Images.search_by_cat_name(search_term)
-        photos = Images.objects.filter(name=searched_photo).all()
+        # photos = Images.objects.filter(name=searched_photo).all()
         message = f"{search_term}"
-        return render(request, 'all-photos/search_image.html', {"message": message, "photos": searched_photo})
+        return render(request, 'all-photos/search_image.html', {"message": message, "images": searched_photo})
     else:
         message = 'You haven\'t searched for any photos.'
         return render(request, 'all-photos/search_image.html', {"message": message})

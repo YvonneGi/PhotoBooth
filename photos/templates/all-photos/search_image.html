@@ -1,33 +1,61 @@
 {% extends 'all-photos/base.html' %} {% block content %}
-<div class="container">
+<!-- <div class="container">
     <section class="no-touch">
         <p class="text-center" style="font-size:1.3em">Search Results:
-            <!-- <span>{{images|length}}</span> matches found </p> -->
+             <span>{{images|length}}</span> matches found </p> -->
+<!-- 
+{% if images %} {% for image in images%}
 
-            {% if images %} {% for image in images%}
+<div class="col-md-10 col-md-offset-1 col-sm-12">
+    <div class="uk-card uk-card-default uk-card-body uk-width-1-2@m">
+        <h3 class="uk-card-title">{{images.category|upper}}</h3>
+         <hr class="uk-divider-icon"> -->
+<!-- <img src="{{image.photo.url}}" class="img-responsive" width="100%" height="100%"> -->
+<!-- </div> -->
+<!-- </div> -->
+<!-- {% endfor %} {% else %}
+<div>
+    <div class="uk-card uk-card-primary uk-card-body">
+        <hr class="uk-divider-icon">
+        <h2 class="uk-card-title">No Photos found with that search criteria </h2>
+        <hr class="uk-divider-icon">
 
-            <div class="col-md-10 col-md-offset-1 col-sm-12">
-                <!-- <a href="{% url 'singlePhoto' photo_item.id %}"> -->
-                <!-- <img src="{{image.photo.url}}" class="img-responsive" width="100%" height="100%" alt=""> -->
-                <div class="uk-card uk-card-default uk-card-body uk-width-1-2@m">
-                    <h3 class="uk-card-title">{{images.category|upper}}</h3>
-                    <!-- <hr class="uk-divider-icon"> -->
-                    <img src="{{images.photo.url}}" class="img-responsive" width="100%" height="100%">
-                </div>
-                <!-- </a> -->
+    </div>
+    {% endif %}
+</div> -->
+
+<!-- </section> -->
+<div class="container">
+
+    <div class="row">
+        {% if image %}
+        <h2 class="text-center" style="font-size:1.3em">Search Results: {{ image|length }} of searched term
+            {{message}}</h2>
+        {% else %}
+        <h2> Found 0 photos for the search term {{message}}</h2>
+        <!-- <div class="uk-card uk-card-primary uk-card-body">
+            <hr class="uk-divider-icon">
+            <h2 class="uk-card-title">No Photos found with that search criteria </h2>
+            <hr class="uk-divider-icon">
+
+        </div> -->
+        {% endif %}
+
+    </div>
+
+    <div class="row">
+        {% if images %}
+        {% for image in images %}
+        <div class="col-md-10 col-md-offset-1 col-sm-12">
+            <div class="uk-card uk-card-default uk-card-body uk-width-1-2@m">
+                <h3 class="uk-card-title">{{image.name|upper}}</h3>
+                <!-- <h3 class="uk-card-title">{{image.name|upper}}</h3> -->
+                <hr class="uk-divider-icon">
+                <img src="{{image.photo.url}}" class="img-responsive" width="100%" height="100%">
             </div>
-            {% endfor %} {% else %}
-            <div>
-                <div class="uk-card uk-card-primary uk-card-body">
-                    <hr class="uk-divider-icon">
-                    <h2 class="uk-card-title">No Photos found with that search criteria </h2>
-                    <hr class="uk-divider-icon">
-
-                </div>
-                {% endif %}
-            </div>
-
-    </section>
-
-
-    {% endblock %}
+        </div>
+        {% endfor %}
+        {% endif %}
+    </div>
+</div>
+{% endblock %}
