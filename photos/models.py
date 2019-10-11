@@ -9,7 +9,7 @@ class Location(models.Model):
     loc_name = models.CharField(max_length=30)
 
     def __str__(self):
-        return self.name
+        return self.loc_name
 
     def save_location(self):
 
@@ -36,7 +36,7 @@ class Category(models.Model):
     cat_name = models.CharField(max_length=30)
 
     def __str__(self):
-        return self.name
+        return self.cat_name
 
     def save_category(self):
 

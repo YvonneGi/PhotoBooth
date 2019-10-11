@@ -2,26 +2,43 @@
 
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link href="https://fonts.googleapis.com/css?family=Acme" rel="stylesheet">
-    <title>PhotoBooth Today</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link href="https://fonts.googleapis.com/css?family=Acme" rel="stylesheet">
+  <title>PhotoBooth Today</title>
 </head>
 
 <!--Styling -->
 <style>
-    p{
-        font-family: 'Acme', sans-serif;
-        text-align: center;
-        font-size: 50px;
-    }
+  p {
+    font-family: 'Acme', sans-serif;
+    text-align: center;
+    font-size: 50px;
+  }
 </style>
 <!--End of styling-->
 
 <body>
-    <p> Here Comes The Beast</p>
-{% endblock %}
+  <p> Here Comes The Hits of the day</p>
+  <!-- Looping through news   -->
+  {% for photos_item in photos %}
+  <div class="row">
+    <!-- displaying News articles -->
+    <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+      <h2 class="text-center"> {{ photos_item.name }} </h2>
+      <p><img src="{{photo_item.photo.url}}" class="img-responsive" alt="Image" height="100px" width="100px"></p>
+      <p>{{photos_item.location}}</p>
+      <p>{{photos_item.category}}</p>
+      <p>{{photos_item.description}}</p>
+      <p>{{photos_item.time_posted}}</p>
+    </div>
+  </div>
+  {% endfor %}
+
+  {% endblock %}
 </body>
+
 </html>
