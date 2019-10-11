@@ -51,12 +51,12 @@ class CategoryTestClass(TestCase):
         updated = Category.objects.filter(cat_name = "House").first()
         self.assertTrue(Category.cat_name,updated.cat_name)
     #Testing delete Method
-    # def test_delete(self):
-    #     self.car.save_category()
-    #     category = Category.objects.filter(cat_name="car").first()
-    #     delete = Category.objects.filter(id=category.id).delete()
-    #     categories = Category.objects.all()
-    #     self.assertTrue(len(categories) ==0 )
+    def test_delete_category(self):
+       self.car.save_category()
+       car = Category.objects.filter(cat_name='Car').first()
+       cars = Category.objects.filter(id =car.id).delete()
+       cars =Category.objects.all()
+       self.assertTrue(len(cars) ==0 )
 
 # Tests for Images model.
 class ImagesTestClass(TestCase):
