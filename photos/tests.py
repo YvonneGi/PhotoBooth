@@ -62,8 +62,12 @@ class CategoryTestClass(TestCase):
 class ImagesTestClass(TestCase):
     # Set up method
     def setUp(self):
-        self.wall= Images(photo = '/static/images/wall.jpg',name = 'Wall',
+        self.wall= Images(id=1,photo = '/static/images/wall.jpg',name = 'Wall',
         descripton = 'Generic image')
+        self.car = Category(cat_name='Car')
+        self.car.save_category()
+        self.kigali = Location(loc_name = 'Kigali')
+        self.kigali.save_location()
     # Testing  instance
     def test_instance(self):
         self.assertTrue(isinstance(self.wall,Images))
@@ -90,16 +94,23 @@ class ImagesTestClass(TestCase):
     def test_get_images(self):
         images = Images.objects.all()
         self.assertTrue(Images.name)
+    # Testing get images by category Method
+    def test_search_by_category(self):
+        self.wall.save_image()
+        fetch_specific = Category.objects.get(cat_name='Car')
+        self.assertTrue(fetch_specific.cat_name=='Car')
     # Testing get images by id Method
-    # def test_get_images_by_id(self):
-    #     images = Images.objects.filter(name = "Wall").first()
-    #     get_images = Images.objects.get(id=image.id)
-    #     self.assertTrue(images.id)
+    # def test_get_image_by_id(self):
+    #     self.wall.save_image()
+    #     fetched_image = Images.get_image_by_id(1)
+    #     self.assertEqual(fetched_image.id,1)
 
     # Testing filter by by location Method
     # def test_filter_by_location(self):
-    #     self.kigali.save_location()
-    #     images = Images.objects.filter(location = "kigali").first()
-    #     self.assertTrue(Images.name)
+    #     self.wall.save_image()
+    #     fetch_specific = Images.filter_location('kigali')
+    #     self.assertEqual(fetch_specific.get(id=1),self.wall)
+
+   
 
  
