@@ -1,84 +1,92 @@
 {% extends 'all-photos/base.html' %} {% block content %}
 
 <style>
-  .close {
-    position: absolute;
-    right: 32px;
-    top: 20px;
-    width: 5px;
-    height: 5px;
-    /* opacity: 0.3; */
-  }
+    .close {
+        position: absolute;
+        right: 32px;
+        top: 20px;
+        width: 5px;
+        height: 5px;
+        /* opacity: 0.3; */
+    }
 
-  .close:hover {
-    opacity: 1;
-  }
+    .close:hover {
+        opacity: 1;
+    }
 
-  .close:before,
-  .close:after {
-    position: absolute;
-    left: 15px;
-    content: ' ';
-    height: 20px;
-    width: 2px;
-    background-color: black;
-  }
+    .close:before,
+    .close:after {
+        position: absolute;
+        left: 15px;
+        content: ' ';
+        height: 20px;
+        width: 2px;
+        background-color: black;
+    }
 
-  .close:before {
-    transform: rotate(45deg);
-  }
+    .close:before {
+        transform: rotate(45deg);
+    }
 
-  .close:after {
-    transform: rotate(-45deg);
-  }
+    .close:after {
+        transform: rotate(-45deg);
+    }
 </style>
+
+<div class="row" class="uk-card uk-card-primary uk-card-body">
+    <h2 style="color: black;font-family: 'Acme', sans-serif;margin-left:300px;margin-top:30px;"> Search results for {{message}}:</h2>
+</div>
+
+
 <div class="row">
-  {% for image in images %}
-  <div class="col-md-3">
-
-    <div class="col-md-12 col-md-offset-1 col-sm-12">
-      <div class="uk-card uk-card-default uk-card-body uk-width-25-2@m">
-        <img style=" margin-top: 10px; margin-bottom: 10px;width:350px; height:200px;" src="{{image.photo.url}}"
-          class="img-thumbnail photo" alt="Image" data-toggle="modal" data-target="#{{image.id}}">
-        <hr class="uk-divider-icon">
-        <h5 class="uk-card-title" style="color: black;font-family: 'Acme', sans-serif;">{{image.name}}</h5>
-      </div>
-    </div>
-
-    <!-- Image Details modal -->
-    <div class="modal fade" id="{{image.id}}" tabindex="-1" role="dialog" aria-labelledby="imageTitle"
-      aria-hidden="true">
-      <div style="width:100%; height:5%;" class="modal-dialog" role="document">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h5 class="modal-name" id="imageTitle" style="color: black;font-family: 'Acme', sans-serif;">{{image.name|upper}}</h5>
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close"></button>
-          </div>
-          <div class="modal-body">
-            <img src="{{image.photo.url}}" style="width:450px; height:350px;" alt="Image">
-            <br>
-            <p style="color: black;font-family: 'Acme', sans-serif;"> Description: {{image.descripton}}</p>
-            <p style="color: black;font-family: 'Acme', sans-serif;"> Location: {{image.location}}</p>
-            <p style="color: black;font-family: 'Acme', sans-serif;"> Category: {{image.category}}</p>
-            <p style="color: black;font-family: 'Acme', sans-serif;"> {{image.time_posted}}</p>
-            <button class="btn btn-dark" onclick="copyUrl('{{image.id}}-url')" style="color: black;font-family: 'Acme', sans-serif;">Copy Image Url</button>
-            <input class="form-control input-lg" type="text" value="http://127.0.0.1:8000{{image.photo.url}}"
-              id="{{image.id}}-url" style="color: black;font-family: 'Acme', sans-serif;">
-          </div>
-          <script type="text/javascript">
-            function copyUrl(element) {
-              var myVar = document.getElementById(element);
-              myVar.select();
-              document.execCommand('copy');
-              alert("Copied the link of image: " + myVar.value);
-            }
-          </script>
+    {% for image in images %}
+    <div class="col-md-3">
+        <div class="col-md-12 col-md-offset-1 col-sm-12">
+            <div class="uk-card uk-card-default uk-card-body uk-width-25-2@m">
+                <img style=" margin-top: 10px; margin-bottom: 10px;width:350px; height:200px;" src="{{image.photo.url}}"
+                    class="img-thumbnail photo" alt="Image" data-toggle="modal" data-target="#{{image.id}}">
+                <hr class="uk-divider-icon">
+                <h5 class="uk-card-title" style="color: black;font-family: 'Acme', sans-serif;">{{image.name}}</h5>
+            </div>
         </div>
-      </div>
-    </div>
-  </div>
 
-  {% endfor %}
+        <!-- Image Details modal -->
+        <div class="modal fade" id="{{image.id}}" tabindex="-1" role="dialog" aria-labelledby="imageTitle"
+            aria-hidden="true">
+            <div style="width:100%; height:5%;" class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-name" id="imageTitle" style="color: black;font-family: 'Acme', sans-serif;">
+                            {{image.name|upper}}</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <img src="{{image.photo.url}}" style="width:450px; height:350px;" alt="Image">
+                        <br>
+                        <p style="color: black;font-family: 'Acme', sans-serif;"> Description: {{image.descripton}}</p>
+                        <p style="color: black;font-family: 'Acme', sans-serif;"> Location: {{image.location}}</p>
+                        <p style="color: black;font-family: 'Acme', sans-serif;"> Category: {{image.category}}</p>
+                        <p style="color: black;font-family: 'Acme', sans-serif;"> {{image.time_posted}}</p>
+                        <button class="btn btn-dark" onclick="copyUrl('{{image.id}}-url')"
+                            style="color: black;font-family: 'Acme', sans-serif;">Copy Image Url</button>
+                        <input class="form-control input-lg" type="text"
+                            value="http://127.0.0.1:8000{{image.photo.url}}" id="{{image.id}}-url"
+                            style="color: black;font-family: 'Acme', sans-serif;">
+                    </div>
+                    <script type="text/javascript">
+                        function copyUrl(element) {
+                            var myVar = document.getElementById(element);
+                            myVar.select();
+                            document.execCommand('copy');
+                            alert("Copied the link of image: " + myVar.value);
+                        }
+                    </script>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    {% endfor %}
 
 </div>
 
