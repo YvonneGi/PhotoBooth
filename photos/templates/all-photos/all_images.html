@@ -57,7 +57,7 @@
             <p> Location: {{image.location}}</p>
             <p> Category: {{image.category}}</p>
             <p> {{image.time_posted}}</p>
-            <button class="btn btn-danger" onclick="copyUrl('{{image.id}}-url')">Copy Image Url</button>
+            <button class="btn btn-dark" onclick="copyUrl('{{image.id}}-url')">Copy Image Url</button>
             <input class="form-control input-lg" type="text" value="http://127.0.0.1:8000{{image.photo.url}}"
               id="{{image.id}}-url">
           </div>
