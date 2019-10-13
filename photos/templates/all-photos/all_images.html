@@ -1,66 +1,82 @@
 {% extends 'all-photos/base.html' %} {% block content %}
 
 <style>
-    .close {
-  position: absolute;
-  right: 32px;
-  /* top: 20px; */
-  width: 20px;
-  height: 20px;
-  /* opacity: 0.3; */
-}
-.close:hover {
-  opacity: 1;
-}
-.close:before, .close:after {
-  position: absolute;
-  left: 15px;
-  content: ' ';
-  height: 33px;
-  width: 2px;
-  background-color: black;
-}
-.close:before {
-  transform: rotate(45deg);
-}
-.close:after {
-  transform: rotate(-45deg);
-}
+  .close {
+    position: absolute;
+    right: 32px;
+    /* top: 20px; */
+    width: 20px;
+    height: 20px;
+    /* opacity: 0.3; */
+  }
+
+  .close:hover {
+    opacity: 1;
+  }
+
+  .close:before,
+  .close:after {
+    position: absolute;
+    left: 15px;
+    content: ' ';
+    height: 33px;
+    width: 2px;
+    background-color: black;
+  }
+
+  .close:before {
+    transform: rotate(45deg);
+  }
+
+  .close:after {
+    transform: rotate(-45deg);
+  }
 </style>
-    <div class="row">
-        {% for image in images %}
-        <div class="col-md-3">
+<div class="row">
+  {% for image in images %}
+  <div class="col-md-3">
 
 
-            <img style=" margin-top: 20px; margin-bottom: 20px; width:350px; height:300px;" src="{{image.photo.url}}"
-                class="img-thumbnail photo" alt="Image" data-toggle="modal" data-target="#{{image.id}}">
-            <h5 class="uk-card-title">{{image.name}}</h5>
+    <img style=" margin-top: 20px; margin-bottom: 20px; width:350px; height:300px;" src="{{image.photo.url}}"
+      class="img-thumbnail photo" alt="Image" data-toggle="modal" data-target="#{{image.id}}">
+    <h5 class="uk-card-title">{{image.name}}</h5>
 
-            <!-- Image Details modal -->
-            <div class="modal fade" id="{{image.id}}" tabindex="-1" role="dialog" aria-labelledby="imageTitle"
-                aria-hidden="true">
-                <div style="width:100%; height:20%; padding-top:100px;" class="modal-dialog" role="document">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <h5 class="modal-name" id="imageTitle">{{image.name|upper}}</h5>
-                            <button type="button" class="close" data-dismiss="modal" aria-label="Close"></button>
-                        </div>
-                        <div class="modal-body">
-                            <img src="{{image.photo.url}}" style="width:450px; height:400px;" alt="Image">
-                            <br>
-                            <p> Description: {{image.descripton}}</p>
-                            <p> Location: {{image.location}}</p>
-                            <p> Category: {{image.category}}</p>
-                            <p> {{image.time_posted}}</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
+    <!-- Image Details modal -->
+    <div class="modal fade" id="{{image.id}}" tabindex="-1" role="dialog" aria-labelledby="imageTitle"
+      aria-hidden="true">
+      <div style="width:100%; height:20%; padding-top:100px;" class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-name" id="imageTitle">{{image.name|upper}}</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <img src="{{image.photo.url}}" style="width:450px; height:400px;" alt="Image">
+            <br>
+            <p> Description: {{image.descripton}}</p>
+            <p> Location: {{image.location}}</p>
+            <p> Category: {{image.category}}</p>
+            <p> {{image.time_posted}}</p>
+            <button class="btn btn-danger" onclick="copyUrl('{{image.id}}-url')">Copy Image Url</button>
+            <input class="form-control input-lg" type="text" value="http://127.0.0.1:8000{{image.photo.url}}"
+              id="{{image.id}}-url">
+          </div>
+          <script type="text/javascript">
+            function copyUrl(element){
+              var myVar = document.getElementById(element);
+              myVar.select();
+              document.execCommand('copy');
+              alert("Copied the link of image: " + myVar.value);  
+            }
+          </script>
         </div>
-
-            {% endfor %}
-        
+      </div>
     </div>
+  </div>
+
+  {% endfor %}
+
+</div>
 
 
 {% endblock %}
