@@ -25,9 +25,12 @@ def search_images(request):
     if 'image' in request.GET and request.GET['image']:
         search_term = request.GET.get('image')
         searched_photo = Images.search_by_cat_name(search_term)
-        # photos = Images.objects.filter(name=searched_photo).all()
         message = f"{search_term}"
         return render(request, 'all-photos/search_image.html', {"message": message, "images": searched_photo})
     else:
         message = 'You haven\'t searched for any photos.'
         return render(request, 'all-photos/search_image.html', {"message": message})
+
+def display_images_locations(request):    
+   photos = Image.location(2)
+   return render(request, 'location.html', {"photos":photos})  
