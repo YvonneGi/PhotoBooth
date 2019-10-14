@@ -2,7 +2,7 @@
 ### By **Yvonne**, 
 #### Published date **12/10/2019**
  ---
-## Description
+### Description
 
 A Photobooth is a web application used to display images and search for related category within the app.
 
@@ -12,7 +12,7 @@ A Photobooth is a web application used to display images and search for related 
 
 ---
 
-## Setup/Installation Requirements
+### Setup/Installation Requirements
 
 * open my [GitHub](https://github.com/YvonneGi/)
 * find my repo *PhotoBooth*
@@ -24,7 +24,7 @@ A Photobooth is a web application used to display images and search for related 
 
 ---
 
-#### technologies used 
+### Technologies used 
 * python ( **ver 3.6** )
 * Django framework
 * postgeSQL
