@@ -39,7 +39,7 @@ def search_images(request):
 #     category_results = Images.search_category(category)
 #     return render(request,'welcome.html',{'locations':locations,'categories':categories})
 
-# def page_location(request,location):
+# def filter_by_location(request,location):
 #     locations = Location.objects.all()
 #     categories = Category.objects.all()
 #     location_results = Image.filter_location(location)

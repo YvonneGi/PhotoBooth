@@ -108,8 +108,8 @@ class Images(models.Model):
         Returns:
             selected_image : desired image
         '''
-        selected_image = Images.objects.filter_by(id=id)
-        return selected_image
+        fetched_image = Images.objects.filter_by(id=id)
+        return fetched_image
 
     @classmethod
     def search_by_cat_name(cls, search_term):
