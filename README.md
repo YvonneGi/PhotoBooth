@@ -25,9 +25,9 @@ A Photobooth is a web application used to display images and search for related 
 ---
 
 ### Technologies used 
-* python ( **ver 3.6** )
+* Python ( **ver 3.6** )
 * Django framework
-* postgeSQL
+* PostgeSQL
 ---
 
 ### Copyright (C) 2019 ~ Yvonne
