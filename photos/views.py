@@ -7,7 +7,9 @@ from .models import Images,Category,Location
 
 # Create your views here.
 def welcome(request):
-    return render(request, 'welcome.html')
+    locations = Location.objects.all()
+    categories = Category.objects.all()
+    return render(request, 'welcome.html',{'locations':locations,'categories':categories})
 
 def display_image(request):
     date = dt.date.today()
@@ -31,6 +33,14 @@ def search_images(request):
         message = 'You haven\'t searched for any photos.'
         return render(request, 'all-photos/search_image.html', {"message": message})
 
-def display_images_locations(request):    
-   photos = Image.location(2)
-   return render(request, 'location.html', {"photos":photos})  
+# def page_category(request,category):
+#     locations = Location.objects.all()
+#     categories = Category.objects.all()
+#     category_results = Images.search_category(category)
+#     return render(request,'welcome.html',{'locations':locations,'categories':categories})
+
+# def page_location(request,location):
+#     locations = Location.objects.all()
+#     categories = Category.objects.all()
+#     location_results = Image.filter_location(location)
+#     return render(request,'welcome.html',{'locations':locations,'categories':categories})

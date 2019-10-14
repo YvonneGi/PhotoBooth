@@ -118,7 +118,7 @@ class Images(models.Model):
 
     @classmethod
     def filter_by_loc_name(cls, filter_term):
-        photo = cls.objects.filter(name__icontains=filter_term)
+        photo = cls.objects.filter(location__loc_name__icontains=filter_term)
         return photo
 
 

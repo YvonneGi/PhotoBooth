@@ -42,7 +42,7 @@
     {% for image in images %}
     <div class="col-md-3">
         <div class="col-md-12 col-md-offset-1 col-sm-12">
-            <div class="uk-card uk-card-default uk-card-body uk-width-25-2@m">
+            <div class="uk-card uk-card-default uk-card-body uk-width-25-2@m" style="margin-bottom: 5px;">
                 <img style=" margin-top: 10px; margin-bottom: 10px;width:350px; height:200px;" src="{{image.photo.url}}"
                     class="img-thumbnail photo" alt="Image" data-toggle="modal" data-target="#{{image.id}}">
                 <hr class="uk-divider-icon">
@@ -63,7 +63,7 @@
                     <div class="modal-body">
                         <img src="{{image.photo.url}}" style="width:450px; height:350px;" alt="Image">
                         <br>
-                        <p style="color: black;font-family: 'Acme', sans-serif;"> Description: {{image.descripton}}</p>
+                        <p style="color: black;font-family: 'Acme', sans-serif;">{{image.descripton}}</p>
                         <p style="color: black;font-family: 'Acme', sans-serif;"> Location: {{image.location}}</p>
                         <p style="color: black;font-family: 'Acme', sans-serif;"> Category: {{image.category}}</p>
                         <p style="color: black;font-family: 'Acme', sans-serif;"> {{image.time_posted}}</p>
